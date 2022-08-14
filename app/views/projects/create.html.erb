@@ -1,0 +1,12 @@
+<% if @project.errors.any? %>
+<div class="error_explanation">
+    <h5><%= pluralize(@project.errors.count, 'error') %> Hay un error, que ha evitado que el proyecto sea guardado: </h5>
+    <ul>
+    <% @project.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+    </ul>
+</div>
+<% else %>
+<h1>Felicitaciones, el proyecto ha sido guardado!</h1>
+<% end %>

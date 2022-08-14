@@ -1,0 +1,41 @@
+<h1>Projects manager</h1>
+<p>Please enter your data project here:</p>
+
+<form action="/projects/create">
+    <div class="container">
+        <div class="form-group">
+
+            <input type="text" name="name" placeholder="Name Project" class="form-control">
+            <textarea name="description" cols="10" rows="5" class="form-control"></textarea>
+            <input type="date" name="start_date" placeholder="Start date" class="form-control">
+            <input type="date" name="end_date" placeholder="End date" class="form-control">
+            <%= select_tag :state, options_for_select(Project.states) %>
+        </div>
+        <input type="submit" value= "Crear Proyecto" class="btn btn-primary">
+    </div>
+</form>
+
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name Project</th>
+      <th scope="col">Description</th>
+      <th scope="col">Star Date</th>
+      <th scope="col">End Date</th>
+      <th scope="col">State</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @projects.each do |project| %>
+    <tr>
+      <th scope="row"><%= project.id %></th>
+      <td><%= project.name %></td>
+      <td><%= project.description %></td>
+      <td><%= project.start_date %></td>
+      <td><%= project.end_date %></td>
+      <td><%= project.state %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
